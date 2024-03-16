@@ -126,7 +126,7 @@ touch .restart-app
 ###### в корневой директории вашего сайта. После перезапуска проекта файл будет удалён автоматически.
 
 
-# [Как установить Django на хостинг REG.RU:](https://help.reg.ru/support/hosting/php-asp-net-i-skripty/kak-ustanovit-django-na-hosting)
+# Как [установить](https://help.reg.ru/support/hosting/php-asp-net-i-skripty/kak-ustanovit-django-na-hosting) Django на хостинг REG.RU:
 Примечание: мануал для запуска проекта на хостинге во избежание лишних затрат на облачный VPS(Virtual Private Server).
 
 1. Войдите в панель управления хостингом.
