@@ -1,39 +1,65 @@
 # Django-manual
-Мануал для запуска проектов на Django
+### Мануал по созданию и запуску проектов на Django
 
-#### Создание проекта:
+###### Последовательность создания и запуска проекта:
 ```shell
-#
-# Загрузить данные в БД
+# В зависимости от платформы, может использоваться python или python3
+# Создание виртуального окружения
+python -m venv venv
+# Активация виртуального окружения
+source venv/bin/activate #Mac
+venv\Scripts\activate #Windows
+
+# Обновление пакетов виртуального окружения
+pip install --upgrade pip
+
+
+# Настройка нового проекта
+#################################################################
+# Создание нового проекта
+django-admin startproject project_name
+
+# Создание приложения проекта
+python manage.py startapp app_name
+
+# Регистрация нового приложение в конфигурационном файле
+
+# settings.py
+#-----------------------------------------
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app_name',
+]
+#-----------------------------------------
+#################################################################
+
+
+# Установка зависимостей в ручную или автоматически через команду
+pip install -r requirements.txt
+
+# Создание миграции для БД
+python manage.py makemigrations
+
+# Миграция данных для таблиц
+python manage.py migrate
+
+# Загрузить имеющиеся или тестовые данные в БД
 python manage.py loaddata data.json
+
 # Создать суперпользователя
 python manage.py createsuperuser
-```
 
-#### Запуск на Mac:
-```shell
-python3 -m venv venv
-source venv/bin/activate 
-pip install --upgrade pip
-pip install -r requirements.txt
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py createsuperuser
-python3 manage.py runserver
-```
-#### Запуск на Windows:
-```shell
-python -m venv venv
-venv\Scripts\activate 
-pip install --upgrade pip
-pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
+# Запуск локального сервера
 python manage.py runserver
 ```
 
-#### Запуск на сервере REG.RU через SSH:
+
+###### Запуск на сервере REG.RU через SSH:
 ```shell
 # Подключение по SSH:
  ssh: u0000000@ip_address_server
@@ -69,6 +95,8 @@ ls -la /opt/python/*/bin/python
 source djangoenv/bin/activate
 
 # 8.Обновите pip, установите пакеты Django и mysqlclient с помощью команды:
+#если вы используете Python 3.7.6 и ниже:
+pip install --upgrade pip && pip install django && CFLAGS="-std=c99" pip install mysqlclient
 # если вы используете версию Python 3.8.6 и выше:
 pip install --upgrade pip && pip install django==4.1.10 && CFLAGS="-std=c99" pip install mysqlclient
 
@@ -83,11 +111,23 @@ pwd
 django-admin startproject project_name
 # Перейдите в каталог проекта
 cd project_name
-# 11.Откройте настройки вашего файла через панель ISP менеджера:
+# 11.Откройте настройки(settings.py) вашего проекта локально или через панель ISP менеджера:
 
-# project_name/project_name/settings.py
-ALLOWED_HOSTS = ['domain_example.ru', 'www.domain_example.ru']
+# settings.py
+#------------------------------------------------------------------------------------------
 
+#ALLOWED_HOSTS = [] # Local
+ALLOWED_HOSTS = ['domain_example.ru', 'www.domain_example.ru'] # Server
+
+# Local
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# Server
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -102,6 +142,11 @@ DATABASES = {
 }
 # Ниже секции STATIC_URL добавьте новую секцию: 
 STATIC_ROOT = 'static/'
+# Или
+STATICFILES_DIRS = [
+    BASE_DIR / "static/",
+]
+#------------------------------------------------------------------------------------------
 
 # 12.Создайте каталог стилей для администратора со статическими файлами командой:
 python manage.py collectstatic
@@ -110,6 +155,8 @@ python manage.py collectstatic
 python manage.py migrate
 
 # 14.Создайте в корневом каталоге вашего сайта конфигурационный файл с именем passenger_wsgi.py и запишите в нем следующее:
+
+# passenger_wsgi.py
 #------------------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
 import os, sys
@@ -121,10 +168,7 @@ application = get_wsgi_application()
 #------------------------------------------------------------------------------------------
 ```
 
-#### Удалённое подключение по SSH и установка зависимостей в ручном режиме:
-
----
-При необходимости может размещаться в README.md
+#### Подключение по SSH и зависимости для работы проекта. При необходимости может размещаться в README.md:
 ###### SSH:
 ```shell
  ssh: username@ip_address_server
