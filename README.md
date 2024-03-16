@@ -4,14 +4,17 @@
 ```shell
 python -m venv venv
 ```
+
 ###### Активация виртуального окружения на Mac:
 ```shell
 source venv/bin/activate
 ```
+
 ###### Активация виртуального окружения на Windows:
 ```shell
 venv\Scripts\activate
 ```
+
 ###### Обновление пакетов виртуального окружения:
 ```shell
 pip install --upgrade pip
@@ -23,13 +26,14 @@ pip install --upgrade pip
 ```shell
 django-admin startproject project_name
 ```
+
 ###### Создание приложения проекта:
 ```shell
 python manage.py startapp app_name
 ```
-###### Регистрация нового приложение в конфигурационном файле:
+
+###### Регистрация нового приложение в конфигурационном файле(settings.py):
 ```text
-# settings.py
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,26 +44,32 @@ INSTALLED_APPS = [
     'app_name',
 ]
 ```
+
 ###### Установка зависимостей в ручную или автоматически через команду:
 ```shell
 pip install -r requirements.txt
 ```
+
 ###### Создание миграции для БД:
 ```shell
 python manage.py makemigrations
 ```
+
 ###### Миграция данных для таблиц:
 ```shell
 python manage.py migrate
 ```
+
 ###### Загрузить данные в БД:
 ```shell
 python manage.py loaddata data.json
 ```
+
 ###### Создать суперпользователя:
 ```shell
 python manage.py createsuperuser
 ```
+
 ###### Запуск локального сервера:
 ```shell
 python manage.py runserver
@@ -73,34 +83,42 @@ python manage.py runserver
  ssh: u0000000@ip_address_server
 pass: ****************
 ```
+
 ###### Перейти в корневой каталог пользователя:
 ```shell
 cd ~
 ```
+
 ###### Получить путь к директории в которой находишься:
 ```shell
 pwd
 ```
+
 ###### Активировать виртуальное окружение:
 ```shell
 source djangoenv/bin/activate
 ```
+
 ###### Перейти в директорию www, где находятся проекты сайтов:
 ```shell
 cd www/
 ```
+
 ###### Клонировать проект:
 ```shell
 git clone https://ghp_exampleQNiTlf3FnDlmpcegO9PnDIM0oEojE@github.com/git_username/project_name.git
 ```
+
 ###### Перейти в директорию клонированного проекта:
 ```shell
 cd domain_example.ru/
 ```
+
 ###### Обновить проект
 ```shell
 git pull
 ```
+
 ###### Если вы изменили файлы проекта и хотите увидеть изменения, вам необходимо перезапустить проект. Для этого создайте файл:
 ```shell
 touch .restart-app
@@ -110,51 +128,79 @@ touch .restart-app
 
 #### [Как установить Django на хостинг REG.RU](https://help.reg.ru/support/hosting/php-asp-net-i-skripty/kak-ustanovit-django-na-hosting):
 Примечание: мануал для запуска проекта на хостинге во избежание лишних затрат на облачный VPS(Virtual Private Server)
+
+1. Войдите в панель управления хостингом.
+2. Перейдите в раздел Сайты, выберите домен, для которого вы хотите установить Django, и нажмите Изменить.
+3. В разделе «Дополнительные возможности» включите CGI-скрипты, Python, выберите Версию Python.
+4. Подключитесь к хостингу по SSH.
+5. Перейдите в каталог вашего пользователя с помощью команды:
 ```shell
-# 1.Войдите в панель управления хостингом.
-# 2.Перейдите в раздел Сайты, выберите домен, для которого вы хотите установить Django, и нажмите Изменить.
-# 3.В разделе «Дополнительные возможности» включите CGI-скрипты, Python, выберите Версию Python
-# 4.Подключитесь к хостингу по SSH.
-# 5.Перейдите в каталог вашего пользователя с помощью команды:
 cd ~
+```
 
-# Убедитесь, что вы в нужном каталоге, выполнив команду:
+- Убедитесь, что вы в нужном каталоге, выполнив команду:
+```shell
 pwd
+```
 
-#6. Чтобы узнать доступные версии Python, выполните команду:
+6. Чтобы узнать доступные версии Python, выполните команду:
+```shell
 ls -la /opt/python/*/bin/python
+```
 
-# Для создания виртуального окружения выполните команду:
+- Для создания виртуального окружения выполните команду:
+```shell
 /opt/python/python-3.9.0/bin/python -m venv djangoenv
+```
 
-# 7. Активируйте ваше виртуальное окружение с помощью команды:
+7. Активируйте ваше виртуальное окружение с помощью команды:
+```shell
 source djangoenv/bin/activate
+```
 
-# 8.Обновите pip, установите пакеты Django и mysqlclient с помощью команды:
-#если вы используете Python 3.7.6 и ниже:
+8. Обновите pip, установите пакеты Django и mysqlclient с помощью команды:
+- если вы используете Python 3.7.6 и ниже:
+```shell
 pip install --upgrade pip && pip install django && CFLAGS="-std=c99" pip install mysqlclient
-# если вы используете версию Python 3.8.6 и выше:
+```
+
+- если вы используете версию Python 3.8.6 и выше:
+```shell
 pip install --upgrade pip && pip install django==4.1.10 && CFLAGS="-std=c99" pip install mysqlclient
+```
 
-# 9.Перейдите в корневой каталог вашего сайта с помощью команды:
+9. Перейдите в корневой каталог вашего сайта с помощью команды:
+```shell
 cd www/domain_example.ru/
+```
 
-# Убедитесь, что вы в нужном каталоге, выполнив команду:
+- Убедитесь, что вы в нужном каталоге, выполнив команду:
+```shell
 pwd
+```
 
-# 10.Важно: перед созданием проекта удалите все файлы и папки из каталога вашего сайта.
-# Создайте новый проект в корневом каталоге:
+10. Важно: перед созданием проекта удалите все файлы и папки из каталога вашего сайта.
+- Создайте новый проект в корневом каталоге:
+```shell
 django-admin startproject project_name
-# Перейдите в каталог проекта
+```
+
+- Перейдите в каталог проекта
+```shell
 cd project_name
-# 11.Откройте настройки(settings.py) вашего проекта локально или через панель ISP менеджера:
+```
 
-# settings.py
-#------------------------------------------------------------------------------------------
-
+11. Откройте настройки конфигурационного файла(settings.py) вашего проекта:
+- Для запуска локально или на сервере:
+```text
 #ALLOWED_HOSTS = [] # Local
 ALLOWED_HOSTS = ['domain_example.ru', 'www.domain_example.ru'] # Server
+```
 
+- Настройки по умолчанию для sqlite3 можно оставить закомментированными.
+- Это позволяет не настраивать mysql на локальной машине, а тестировать на sqlite3 БД.
+- Добавить ниже новые mysql для работы на сервере:
+```text
 # Local
 # DATABASES = {
 #     'default': {
@@ -176,24 +222,49 @@ DATABASES = {
         },
     }
 }
+```
+
+- Для работы с файлами шаблонов изменить 'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+```text
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+
+- Для работы со статичными файлами:
+```text
 # Ниже секции STATIC_URL добавьте новую секцию: 
 STATIC_ROOT = 'static/'
 # Или
 STATICFILES_DIRS = [
     BASE_DIR / "static/",
 ]
-#------------------------------------------------------------------------------------------
+```
 
-# 12.Создайте каталог стилей для администратора со статическими файлами командой:
+12. Создайте каталог стилей для администратора со статическими файлами командой:
+```shell
 python manage.py collectstatic
+```
 
-# 13.Выполните миграцию в MySQL с помощью команды:
+13. Выполните миграцию в MySQL с помощью команды:
+```shell
 python manage.py migrate
+```
 
-# 14.Создайте в корневом каталоге вашего сайта конфигурационный файл passenger_wsgi.py:
-
-# passenger_wsgi.py
-#------------------------------------------------------------------------------------------
+14. Создайте в корневом каталоге вашего сайта конфигурационный файл passenger_wsgi.py:
+```text
 # -*- coding: utf-8 -*-
 import os, sys
 sys.path.insert(0, '/var/www/u0000000/data/www/domain_example.ru/project_name')
@@ -201,8 +272,8 @@ sys.path.insert(1, '/var/www/u0000000/data/djangoenv/lib/python3.9/site-packages
 os.environ['DJANGO_SETTINGS_MODULE'] = 'project_name.settings'
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-#------------------------------------------------------------------------------------------
 ```
+
 
 #### Подключение по SSH и зависимости для работы проекта. При необходимости может размещаться в README.md:
 ###### SSH:
@@ -210,6 +281,7 @@ application = get_wsgi_application()
  ssh: username@ip_address_server
 pass: ****************
 ```
+
 ###### Requirements:
 ```shell
 pip install package-name
