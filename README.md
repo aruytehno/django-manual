@@ -4,13 +4,12 @@
 ```shell
 python -m venv venv
 ```
-###### Активация виртуального окружения:
+###### Активация виртуального окружения на Mac:
 ```shell
-# Mac
 source venv/bin/activate
 ```
+###### Активация виртуального окружения на Windows:
 ```shell
-# Windows
 venv\Scripts\activate
 ```
 ###### Обновление пакетов виртуального окружения:
