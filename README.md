@@ -126,8 +126,8 @@ touch .restart-app
 ###### в корневой директории вашего сайта. После перезапуска проекта файл будет удалён автоматически.
 
 
-#### [Как установить Django на хостинг REG.RU](https://help.reg.ru/support/hosting/php-asp-net-i-skripty/kak-ustanovit-django-na-hosting):
-Примечание: мануал для запуска проекта на хостинге во избежание лишних затрат на облачный VPS(Virtual Private Server)
+# [Как установить Django на хостинг REG.RU](https://help.reg.ru/support/hosting/php-asp-net-i-skripty/kak-ustanovit-django-na-hosting):
+Примечание: мануал для запуска проекта на хостинге во избежание лишних затрат на облачный VPS(Virtual Private Server).
 
 1. Войдите в панель управления хостингом.
 2. Перейдите в раздел Сайты, выберите домен, для которого вы хотите установить Django, и нажмите Изменить.
@@ -275,7 +275,8 @@ application = get_wsgi_application()
 ```
 
 
-#### Подключение по SSH и зависимости для работы проекта. При необходимости может размещаться в README.md:
+# SSH and Requirements
+#### При необходимости может размещаться в README.md
 ###### SSH:
 ```shell
  ssh: username@ip_address_server
@@ -288,7 +289,7 @@ pip install package-name
 pip install package-name==0.00.00
 ```
 
-# Рекомендации:
+# Рекомендации
 ###### Шаблоны Templates
 ```text
 Папку templates с шаблонами лучше размещать внутри приложения. в корневой каталог были вынесены только base-шаблоны. 
