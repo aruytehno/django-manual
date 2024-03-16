@@ -66,23 +66,47 @@ python manage.py runserver
 ```
 
 
-## Запуск на сервере REG.RU через SSH:
-```shell
-# Подключение по SSH:
+# Запуск на сервере REG.RU через SSH
+
+###### Подключение по SSH:
+```text
  ssh: u0000000@ip_address_server
 pass: ****************
-cd ~
-pwd
-source djangoenv/bin/activate
-cd www/
-git clone https://ghp_exampleQNiTlf3FnDlmpcegO9PnDIM0oEojE@github.com/git_username/project_name.git
-cd domain_example.ru/
-pwd
-git pull
-# Если вы изменили файлы проекта и хотите увидеть изменения, вам необходимо перезапустить проект. Для этого создайте файл: 
-touch .restart-app
-# в корневой директории вашего сайта. После перезапуска проекта файл будет удалён автоматически.
 ```
+###### Перейти в корневой каталог пользователя:
+```shell
+cd ~
+```
+###### Получить путь к директории в которой находишься:
+```shell
+pwd
+```
+###### Активировать виртуальное окружение:
+```shell
+source djangoenv/bin/activate
+```
+###### Перейти в директорию www, где находятся проекты сайтов:
+```shell
+cd www/
+```
+###### Клонировать проект:
+```shell
+git clone https://ghp_exampleQNiTlf3FnDlmpcegO9PnDIM0oEojE@github.com/git_username/project_name.git
+```
+###### Перейти в директорию клонированного проекта:
+```shell
+cd domain_example.ru/
+```
+###### Обновить проект
+```shell
+git pull
+```
+###### Если вы изменили файлы проекта и хотите увидеть изменения, вам необходимо перезапустить проект. Для этого создайте файл:
+```shell
+touch .restart-app
+```
+###### в корневой директории вашего сайта. После перезапуска проекта файл будет удалён автоматически.
+
 
 #### [Как установить Django на хостинг REG.RU](https://help.reg.ru/support/hosting/php-asp-net-i-skripty/kak-ustanovit-django-na-hosting):
 Примечание: мануал для запуска проекта на хостинге во избежание лишних затрат на облачный VPS(Virtual Private Server)
